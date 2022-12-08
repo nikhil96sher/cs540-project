@@ -1,0 +1,6 @@
+[submodule "benign-deep-linear"]
+	path = benign-deep-linear
+	url = https://github.com/niladri-chatterji/benign-deep-linear
+[submodule "references/benign-deep-linear"]
+	path = references/benign-deep-linear
+	url = https://github.com/niladri-chatterji/benign-deep-linear
