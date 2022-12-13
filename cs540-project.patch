@@ -1,0 +1,610 @@
+diff --git a/configs/exp7_hl_c10.yaml b/configs/exp7_hl_c10.yaml
+new file mode 100644
+index 0000000..75dfb1c
+--- /dev/null
++++ b/configs/exp7_hl_c10.yaml
+@@ -0,0 +1,38 @@
++optim:
++    lr: 1.0e-4
++    target_loss: 1.0e-7
++    max_epochs: 1.0e+5
++
++exp:
++    # Parameters for the data
++    num_runs: 5 # 20
++    dimensions: [500, 1000, 1500, 2000, 2500, 3000]
++
++    # Initial Parameters
++    C: 10
++    delta: 0.05
++
++    # n >= C log(1/delta)
++    num_samples: 100
++
++    # mu^2 >= C log(n/delta)
++    mu_norm: 8
++
++    # noise <= 1/C
++    eta: 0.02
++
++    # gamma
++    ## Currently not used. Using a LeakyRELU()
++    gamma: 0.1
++    H: 10
++
++    output_dimension: 1
++    width_student: 50
++
++    # Parameters for the net
++    loss_function: "hinge"
++    num_hidden_layers: 1
++
++    ## Parameters set in code:
++    # alpha <= 1 / (C max(1,H/sqrt(m)) p^2)
++    # w_init <= (alpha)/sqrt(mp)
+\ No newline at end of file
+diff --git a/configs/exp7_ll_c10.yaml b/configs/exp7_ll_c10.yaml
+new file mode 100644
+index 0000000..2c6d3f9
+--- /dev/null
++++ b/configs/exp7_ll_c10.yaml
+@@ -0,0 +1,38 @@
++optim:
++    lr: 1.0e-4
++    target_loss: 1.0e-7
++    max_epochs: 1.0e+5
++
++exp:
++    # Parameters for the data
++    num_runs: 5 # 20
++    dimensions: [500, 1000, 1500, 2000, 2500, 3000]
++
++    # Initial Parameters
++    C: 10
++    delta: 0.05
++
++    # n >= C log(1/delta)
++    num_samples: 100
++
++    # mu^2 >= C log(n/delta)
++    mu_norm: 8
++
++    # noise <= 1/C
++    eta: 0.02
++
++    # gamma
++    ## Currently not used. Using a LeakyRELU()
++    gamma: 0.1
++    H: 10
++
++    output_dimension: 1
++    width_student: 50
++
++    # Parameters for the net
++    loss_function: "logistic"
++    num_hidden_layers: 1
++
++    ## Parameters set in code:
++    # alpha <= 1 / (C max(1,H/sqrt(m)) p^2)
++    # w_init <= (alpha)/sqrt(mp)
+\ No newline at end of file
+diff --git a/configs/exp7_logistic_loss_c10.yaml b/configs/exp7_logistic_loss_c10.yaml
+new file mode 100644
+index 0000000..ea67747
+--- /dev/null
++++ b/configs/exp7_logistic_loss_c10.yaml
+@@ -0,0 +1,38 @@
++optim:
++    lr: 1.0e-4
++    target_loss: 1.0e-7
++    max_epochs: 1.0e+5
++
++exp:
++    # Parameters for the data
++    num_runs: 5 # 20
++    dimensions: [500, 1000, 5000, 10000, 15000, 20000]
++
++    # Initial Parameters
++    C: 10
++    delta: 0.05
++
++    # n >= C log(1/delta)
++    num_samples: 20
++
++    # mu^2 >= C log(n/delta)
++    mu_norm: 6
++
++    # noise <= 1/C
++    eta: 0.01
++
++    # gamma
++    ## Currently not used. Using a LeakyRELU()
++    gamma: 0.1
++    H: 10
++
++    output_dimension: 1
++    width_student: 50
++
++    # Parameters for the net
++    loss_function: "logistic"
++    num_hidden_layers: 1
++
++    ## Parameters set in code:
++    # alpha <= 1 / (C max(1,H/sqrt(m)) p^2)
++    # w_init <= (alpha)/sqrt(mp)
+\ No newline at end of file
+diff --git a/configs/exp7_logistic_loss_c25.yaml b/configs/exp7_logistic_loss_c25.yaml
+new file mode 100644
+index 0000000..479c68c
+--- /dev/null
++++ b/configs/exp7_logistic_loss_c25.yaml
+@@ -0,0 +1,38 @@
++optim:
++    lr: 1.0e-4
++    target_loss: 1.0e-7
++    max_epochs: 1.0e+5
++
++exp:
++    # Parameters for the data
++    num_runs: 5 # 20
++    dimensions: [500, 1000, 5000, 10000, 15000, 20000]
++
++    # Initial Parameters
++    C: 25
++    delta: 0.05
++
++    # n >= C log(1/delta)
++    num_samples: 40
++
++    # mu^2 >= C log(n/delta)
++    mu_norm: 9
++
++    # noise <= 1/C
++    eta: 0.01
++
++    # gamma
++    ## Currently not used. Using a LeakyRELU()
++    gamma: 0.1
++    H: 10
++
++    output_dimension: 1
++    width_student: 50
++
++    # Parameters for the net
++    loss_function: "logistic"
++    num_hidden_layers: 1
++
++    ## Parameters set in code:
++    # alpha <= 1 / (C max(1,H/sqrt(m)) p^2)
++    # w_init <= (alpha)/sqrt(mp)
+\ No newline at end of file
+diff --git a/configs/exp7_logistic_loss_c50.yaml b/configs/exp7_logistic_loss_c50.yaml
+new file mode 100644
+index 0000000..36a5a65
+--- /dev/null
++++ b/configs/exp7_logistic_loss_c50.yaml
+@@ -0,0 +1,38 @@
++optim:
++    lr: 1.0e-4
++    target_loss: 1.0e-7
++    max_epochs: 1.0e+5
++
++exp:
++    # Parameters for the data
++    num_runs: 5 # 20
++    dimensions: [500, 1000, 5000, 10000, 15000, 20000]
++
++    # Initial Parameters
++    C: 50
++    delta: 0.05
++
++    # n >= C log(1/delta)
++    num_samples: 70
++
++    # mu^2 >= C log(n/delta)
++    mu_norm: 13
++
++    # noise <= 1/C
++    eta: 0.01
++
++    # gamma
++    ## Currently not used. Using a LeakyRELU()
++    gamma: 0.1
++    H: 10
++
++    output_dimension: 1
++    width_student: 50
++
++    # Parameters for the net
++    loss_function: "logistic"
++    num_hidden_layers: 1
++
++    ## Parameters set in code:
++    # alpha <= 1 / (C max(1,H/sqrt(m)) p^2)
++    # w_init <= (alpha)/sqrt(mp)
+\ No newline at end of file
+diff --git a/configs/exp7_mse_c10.yaml b/configs/exp7_mse_c10.yaml
+new file mode 100644
+index 0000000..0c0e6c5
+--- /dev/null
++++ b/configs/exp7_mse_c10.yaml
+@@ -0,0 +1,38 @@
++optim:
++    lr: 1.0e-4
++    target_loss: 1.0e-7
++    max_epochs: 1.0e+5
++
++exp:
++    # Parameters for the data
++    num_runs: 5 # 20
++    dimensions: [500, 1000, 1500, 2000, 2500, 3000]
++
++    # Initial Parameters
++    C: 10
++    delta: 0.05
++
++    # n >= C log(1/delta)
++    num_samples: 100
++
++    # mu^2 >= C log(n/delta)
++    mu_norm: 8
++
++    # noise <= 1/C
++    eta: 0.02
++
++    # gamma
++    ## Currently not used. Using a LeakyRELU()
++    gamma: 0.1
++    H: 10
++
++    output_dimension: 1
++    width_student: 50
++
++    # Parameters for the net
++    loss_function: "mse"
++    num_hidden_layers: 1
++
++    ## Parameters set in code:
++    # alpha <= 1 / (C max(1,H/sqrt(m)) p^2)
++    # w_init <= (alpha)/sqrt(mp)
+\ No newline at end of file
+diff --git a/run.py b/run.py
+index 6362f1c..c32aa3a 100644
+--- a/run.py
++++ b/run.py
+@@ -69,6 +69,20 @@ def parse_args_and_config():
+         help="Run Experiment 5 that calculates the excess risk of a ReLU net with data drawn from a different ReLU net while sweeping over different init scales beta",
+     )
+ 
++    parser.add_argument(
++        "--exp6",
++        type=str,
++        default=False,
++        help="Run Experiment 6",
++    )
++
++    parser.add_argument(
++        "--exp7",
++        type=str,
++        default=False,
++        help="Run Experiment 7",
++    )
++
+     parser.add_argument(
+         "--alpha",
+         type=float,
+@@ -163,6 +177,10 @@ def main():
+             exp.exp4.exp4(args, config)
+         elif args.exp5:
+             exp.exp5.exp5(args, config)
++        elif args.exp6:
++            exp.exp6.exp6(args, config)
++        elif args.exp7:
++            exp.exp7.exp7(args, config)
+         else:
+             logging.info('No experiment provided')
+     except Exception:
+diff --git a/src/data.py b/src/data.py
+index 7466aa5..a0e7ba9 100644
+--- a/src/data.py
++++ b/src/data.py
+@@ -5,11 +5,67 @@ from torch import nn
+ 
+ from .model import ReLUNet
+ 
++def ClusterDataModel(
++        dimension: int,
++        covariance_matrix: torch.Tensor,
++        mu: torch.Tensor,
++        num_samples: int,
++        eta: float,
++    ):
++    ## Generate uniform labels
++    y_01 = (torch.rand((num_samples,1)) >= 0.5)
++    Y_tilde = 2* y_01 - 1
++
++    ## Sample z.
++    m = torch.distributions.multivariate_normal.MultivariateNormal(torch.zeros(dimension), covariance_matrix=covariance_matrix)
++    z = m.sample((num_samples,))
++
++    ## Set X
++    X = z + Y_tilde * (torch.transpose(mu,1,0))
++
++    # prob = torch.rand((num_samples,s))
++    # prob_label = 2 * (prob <= (0.5 + gamma)) - 1
++    # xs = Y_tilde * prob_label
++    # prob = torch.rand((num_samples, dimension - s))
++    # x_ns = 2 * (prob <= 0.5) - 1
++    # X = torch.cat((xs, x_ns), dim = -1).type(torch.FloatTensor)
++    # assert(X.shape == (num_samples, dimension))
++
++    ## Add noise
++    noise_prob = 2 * (torch.rand((num_samples,1)) >= eta) - 1
++    Y = torch.squeeze(torch.mul(Y_tilde, noise_prob)).type(torch.FloatTensor)
++    return X,Y,None
++
++def NoisyRareWeakModel(
++        dimension: int,
++        num_samples: int,
++        gamma: float,
++        s: int,
++        eta: float,
++    ):
++    ## Generate uniform labels
++    y_01 = (torch.rand((num_samples,1)) >= 0.5)
++    Y_tilde = 2* y_01 - 1
++
++    ## Set X
++    prob = torch.rand((num_samples,s))
++    prob_label = 2 * (prob <= (0.5 + gamma)) - 1
++    xs = Y_tilde * prob_label
++    prob = torch.rand((num_samples, dimension - s))
++    x_ns = 2 * (prob <= 0.5) - 1
++    X = torch.cat((xs, x_ns), dim = -1).type(torch.FloatTensor)
++    assert(X.shape == (num_samples, dimension))
++
++    ## Add noise
++    noise_prob = 2 * (torch.rand((num_samples,1)) >= eta) - 1
++    Y = torch.squeeze(torch.mul(Y_tilde, noise_prob)).type(torch.FloatTensor)
++    return X,Y,None
++
+ def GaussianIID(dimension: int,
+                 num_samples: int,
+                 output_dimension: int,
+                 variance: Optional[float] = None,
+-                k: Optional[int] = None, 
++                k: Optional[int] = None,
+                 epsilon: Optional[float] = None,
+                 noise_variance: Optional[float] = 1.0,
+                 theta: Optional[torch.tensor] = None):
+diff --git a/src/experiments/__init__.py b/src/experiments/__init__.py
+index 48a0572..b8315ab 100644
+--- a/src/experiments/__init__.py
++++ b/src/experiments/__init__.py
+@@ -2,4 +2,6 @@ import src.experiments.exp1
+ import src.experiments.exp2
+ import src.experiments.exp3
+ import src.experiments.exp4
+-import src.experiments.exp5
+\ No newline at end of file
++import src.experiments.exp5
++import src.experiments.exp6
++import src.experiments.exp7
+\ No newline at end of file
+diff --git a/src/model.py b/src/model.py
+index 5a14e3f..00a70c3 100644
+--- a/src/model.py
++++ b/src/model.py
+@@ -93,18 +93,49 @@ class LinearNet(nn.Module):
+         self.layers.train()
+         return weight_matrix
+ 
++class SLReLU(nn.Module):
++    '''
++
++    '''
++    def __init__(self, gamma = 0.1, H = 1):
++        '''
++        Init method.
++        '''
++        super().__init__() # init the base class
++        self.gamma = gamma
++        self.H = H
++
++    def forward(self, input):
++        '''
++        Forward pass of the function.
++        '''
++        def compute_slrelu(z):
++            if z >= (1/self.H):
++                result = z - ((1-self.gamma)/(4*self.H))
++            elif z <= -(1/self.H):
++                result = (self.gamma * z) - ((1-self.gamma)/(4*self.H))
++            else:
++                result = ((((1-self.gamma) * self.H)/4) * z * z) + ((1 + self.gamma)/2) * z
++            return result
++        return input.detach().apply_(lambda z: compute_slrelu(z))
++
+ 
+ class ReLUNet(LinearNet):
+     '''
+     Deep ReLU Networks. Setting num_hidden_layers = 0 gives a standard linear model
+     '''
+-    def __init__(self, 
+-                num_hidden_layers: int , 
+-                input_size: int , 
++    def __init__(self,
++                num_hidden_layers: int ,
++                input_size: int ,
+                 hidden_size: int ,
+                 output_size: int,
+                 first_layer_std: Optional[float] = None,
+-                last_layer_std:  Optional[float] = None):
++                last_layer_std:  Optional[float] = None,
++                freeze_last_layer: bool = False,
++                smooth_leaky_relu: bool = False,
++                smooth_leaky_relu_gamma: Optional[float] = None,
++                smooth_leaky_relu_H: Optional[float] = None,
++                ):
+ 
+         super().__init__(num_hidden_layers, input_size, hidden_size, output_size)
+ 
+@@ -119,43 +150,41 @@ class ReLUNet(LinearNet):
+                 self.layers[0].weight.data = torch.zeros(self.layers[0].weight.size())
+         else:
+             layers_list = []
+-            
++
+             layers_list.append(nn.Linear(input_size,hidden_size, bias = False))  #first layer
+-            layers_list.append(nn.ReLU())
++            if smooth_leaky_relu:
++                layers_list.append(nn.LeakyReLU())
++                # SLReLU(smooth_leaky_relu_gamma, smooth_leaky_relu_H))
++            else:
++                layers_list.append(nn.ReLU())
+ 
+             for _ in range(num_hidden_layers-1):
+                 layers_list.append(nn.Linear(hidden_size,hidden_size, bias = False))  # hidden layers
+-                layers_list.append(nn.ReLU())
+-            
+-            layers_list.append(nn.Linear(hidden_size,output_size, bias = False))  # final layer
+-            
+-            self.layers = nn.Sequential(*layers_list)
++                if smooth_leaky_relu:
++                    layers_list.append(nn.LeakyReLU())
++                    #SLReLU(smooth_leaky_relu_gamma, smooth_leaky_relu_H))
++                else:
++                    layers_list.append(nn.ReLU())
++
++            if freeze_last_layer:
++                layers_list.append(nn.Linear(hidden_size,output_size, bias = False))  # final layer
++                # Mark them non-trainable.
++                layers_list[-1].weight.requires_grad = False
++            else:
++                layers_list.append(nn.Linear(hidden_size,output_size, bias = False))  # final layer
+ 
+-            # Initialize the network
+-            if self.first_layer_std is not None or self.last_layer_std is not None:
+-                assert self.first_layer_std is not None and self.last_layer_std is not None
+-                self.initialize()
++            self.layers = nn.Sequential(*layers_list)
+ 
+-    def initialize(self):
+-        '''
+-        Initializes such that the first layer weights are drawn from N(0, first_layer_std)
+-        and the last layer weights are drawn from N(0, last_layer_std).
+-        The rest of the weights are initialized to the identity matrix.         
+-        '''
+-        assert self.num_hidden_layers != 0
+-        
+-        with torch.no_grad():
+-            self.layers[0].weight.data = self.first_layer_std*torch.randn(self.layers[0].weight.size())
+-        
+-            self.layers[-1].weight.data = self.last_layer_std*torch.randn(self.layers[-1].weight.size())
++            #Initialize the network
++            if self.first_layer_std is not None:
++                self.layers[0].weight.data = self.first_layer_std*torch.randn(self.layers[0].weight.size())
+ 
+-            # Initialize hidden layers to identity
+-            for i in range(self.num_hidden_layers-1):
+-                self.layers[2*(i+1)].weight.data = torch.eye(self.layers[2*(i+1)].weight.size()[0])
++            if self.last_layer_std is not None:
++                self.layers[-1].weight.data = self.last_layer_std*torch.randn(self.layers[-1].weight.size())
+ 
+     def forward(self, x):
+         '''Forward pass'''
+-        return self.layers(x)
++        return torch.squeeze(self.layers(x))
+ 
+ 
+     def weights(self):
+diff --git a/src/utils.py b/src/utils.py
+index 5808994..b018f43 100644
+--- a/src/utils.py
++++ b/src/utils.py
+@@ -1,19 +1,20 @@
++import ipdb
+ from typing import Any, Optional
+ import torch
+ import torch.nn as nn
+ import torch.optim as optim
+ 
+-def TrainNet(net: nn.Module, 
++def TrainNet(net: nn.Module,
+               X: torch.tensor,
+-              Y: torch.tensor, 
++              Y: torch.tensor,
+               optimizer: optim.Optimizer,
++              loss_fn = nn.MSELoss(reduction='mean'),
+               target_loss: Optional[float] = 1e-4,
+               max_epochs: Optional[int] = 1000):
+-    
++
+     net.train()
+     epochs = 0
+     loss = torch.tensor(1.0)
+-    loss_fn = nn.MSELoss(reduction='mean')
+     while (loss.item() > target_loss and epochs<max_epochs):
+         optimizer.zero_grad()
+         output = net(X)
+@@ -21,7 +22,7 @@ def TrainNet(net: nn.Module,
+         loss.backward(retain_graph=True)
+         optimizer.step()
+         epochs += 1
+-    
++
+     return net
+ 
+ def loss(X: torch.tensor,
+@@ -33,15 +34,39 @@ def loss(X: torch.tensor,
+     loss = loss/n
+     return loss.item()
+ 
++def get_loss_function(loss_function_name):
++    if loss_function_name == "mse":
++        return nn.MSELoss()
++    elif loss_function_name == "l1":
++        return nn.L1Loss()
++    elif loss_function_name == "logistic":
++        return torch.nn.SoftMarginLoss()
++    elif loss_function_name == "hinge":
++        return torch.nn.HingeEmbeddingLoss(margin=0.5)
++    else:
++        print("Invalid Loss Function Name")
++        return None
++
++def compute_error(X: torch.tensor, Y: torch.tensor, net: nn.Module, loss_function_name):
++    net.eval()
++    with torch.no_grad():
++        output = net(X)
++        signed_output = (output * Y)
++        total = signed_output.shape[0]
++        correct = torch.count_nonzero((signed_output >= 0))
++    if loss_function_name == 'hinge':
++        return (correct)/(total)
++    else:
++        return (total - correct)/(total)
+ 
+ def loss_net(X: torch.tensor,
+          Y: torch.tensor,
+-         net: nn.Module):
++         net: nn.Module, loss_fn: nn.MSELoss(reduction='mean')):
+     net.eval()
+     with torch.no_grad():
+         output = net(X)
+-        loss = torch.norm(output-Y)**2
+-        n = X.size()[0]
+-        loss = loss/n
++        loss = loss_fn(output, Y)
++        # n = X.size()[0]
++        # loss = loss/n
+     return loss.item()
+ 
+diff --git a/variation_l-loss.png b/variation_l-loss.png
+new file mode 100644
+index 0000000..c1b22cc
+Binary files /dev/null and b/variation_l-loss.png differ
+diff --git a/variation_l.png b/variation_l.png
+new file mode 100644
+index 0000000..a64c8e2
+Binary files /dev/null and b/variation_l.png differ
